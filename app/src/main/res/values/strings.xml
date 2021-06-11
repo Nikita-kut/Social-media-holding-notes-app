@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Social-media-holding-notes-app</string>
+    <string name="app_name">Notes</string>
+    <string name="menu_save">Save</string>
+    <string name="note_title">Note title</string>
+    <string name="note_description">Note description</string>
+    <string name="enter_note_title">Enter note title</string>
+    <string name="enter_note_description">Enter note description</string>
+    <string name="notes_activity_title">Notes</string>
 </resources>

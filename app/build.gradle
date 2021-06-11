@@ -1,9 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
+    signingConfigs {
+        'Notes-release' {
+            keyAlias kotlin_version
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -30,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -42,4 +52,19 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // GSON
+    implementation 'com.google.code.gson:gson:2.8.5'
+    // ROOM DB
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // ViewModel, LiveData
+    def lifecycle_version = "2.3.1"
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
 }
